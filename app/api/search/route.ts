@@ -1,13 +1,9 @@
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
-  const query = searchParams.get("q")?.toLowerCase() || "";
+  const q = searchParams.get("q") || "";
 
-  // fake "database"
-  const data = ["apple", "banana", "grape", "orange", "pineapple"];
+  const res = await fetch(`http://localhost:8000/search?q=${encodeURIComponent(q)}`);
+  const data = await res.json();
 
-  const results = data.filter(item =>
-    item.toLowerCase().includes(query)
-  );
-
-  return Response.json(results);
+  return Response.json(data);
 }

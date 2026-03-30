@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
-    "dev:frontend": "npm run dev --prefix frontend",
-    "dev:backend": "cd backend && uvicorn main:app --reload",
+    "dev": "concurrently \"npm run dev:next\" \"npm run dev:py\"",
+    "dev:next": "next dev",
+    "dev:py": "cd python-backend && uvicorn main:app --reload",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
